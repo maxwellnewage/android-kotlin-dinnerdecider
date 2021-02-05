@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
@@ -29,8 +30,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun addFood() {
+        if(etFood.text.isEmpty()){
+            Toast.makeText(this, "You must to complete the food field", Toast.LENGTH_SHORT).show()
+            return
+        }
+
         val newFood = etFood.text.toString()
         foodList.add(newFood)
+
+        Toast.makeText(this, "A new food was added!", Toast.LENGTH_SHORT).show()
+
         etFood.text.clear()
         println(foodList)
     }
